@@ -14,7 +14,7 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity // create table
-@Table(name = "tb_personagens") // tb_postagens
+@Table(name = "tb_postagens") // tb_postagens
 public class Postagem {
 	
 	@Id // primary key  (id)
@@ -23,10 +23,11 @@ public class Postagem {
 	
 	@NotBlank(message = "O atributo é obrigatório!")
     @Size(min = 5, max = 100, message = "O atributo titulo deve conter no minimo 5 e no máximo 100")
-	private String texto;
+	private String titulo;
 	
 	@NotNull(message = "O atributo texto é obrigatório!")
-	@Size(min = 10, max = 1000, message = "O atributo titulo deve conter no minimo 10 e no máximo 1000")
+	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no minimo 10 e no máximo 1000")
+	private String texto;
 	
 	@UpdateTimestamp
 	private LocalDateTime data;
@@ -37,12 +38,19 @@ public class Postagem {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public String getTitulo() {
+		return titulo;
+	}
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
 	public String getTexto() {
 		return texto;
 	}
 	public void setTexto(String texto) {
 		this.texto = texto;
 	}
+	
 	public LocalDateTime getData() {
 		return data;
 	}
